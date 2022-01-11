@@ -23,6 +23,11 @@ function App() {
             </Routes>
           </React.Suspense>
         </div>
+        <footer>
+          © 2022 Pokemoncom
+          <br />
+          Created by Weiny Marchelina
+        </footer>
       </div>
     </Router>
   );

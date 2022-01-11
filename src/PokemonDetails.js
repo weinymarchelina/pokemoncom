@@ -52,16 +52,16 @@ const PokemonDetails = () => {
               <h3>Basic Information</h3>
 
               <li className="height">
-                <p>Height : {data.height}</p>
-                {/* <p>{data.height}</p> */}
+                <p>Height</p>
+                <p>{data.height}</p>
               </li>
               <li className="weight">
-                <p>Weight : {data.weight}</p>
-                {/* <p>{data.weight}</p> */}
+                <p>Weight</p>
+                <p>{data.weight}</p>
               </li>
               <li className="baseExp">
-                <p>Base experience : {data.base_experience}</p>
-                {/* <p>{data.base_experience}</p> */}
+                <p>Base Experience</p>
+                <p>{data.base_experience}</p>
               </li>
             </ul>
 
@@ -83,9 +83,8 @@ const PokemonDetails = () => {
               data.stats.map((obj) => {
                 return (
                   <li key={obj.stat.name}>
-                    <p>
-                      {caps(obj.stat.name)} : {obj.base_stat}
-                    </p>
+                    <p>{caps(obj.stat.name)}</p>
+                    <p>{obj.base_stat}</p>
                   </li>
                 );
               })}

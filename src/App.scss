@@ -114,10 +114,11 @@ li {
 nav {
   @include flex("even");
   justify-content: space-between;
-  //   align-items: flex-start;
+  background-color: $mainColor;
   width: 100%;
   padding: 0 $paddingSecond;
   position: fixed;
+  box-shadow: $shadowMain;
 
   div:nth-child(1) {
     flex: 1;
@@ -295,6 +296,15 @@ form {
     }
   }
 
+  li {
+    @include flex("even");
+    margin-left: $padding30;
+    width: 50%;
+    border-bottom: $letter5 solid black;
+    padding-bottom: $padding10;
+    margin-bottom: $padding10;
+  }
+
   .base {
     @include flex("even");
     align-items: flex-start;
@@ -304,7 +314,14 @@ form {
       flex: 1;
       @include flex("col");
       align-items: flex-start;
+      flex-wrap: wrap;
       padding: 0 $padding30;
+
+      li {
+        @include flex("even");
+        justify-content: space-between;
+        width: 90%;
+      }
     }
   }
 
@@ -312,10 +329,7 @@ form {
     @include flex("");
     width: $width750;
     align-self: center;
-  }
-
-  li {
-    margin-left: $paddingSecond;
+    padding: $padding50 0;
   }
 
   ul:nth-last-child(n) {
@@ -328,6 +342,7 @@ form {
 
     th {
       width: 20%;
+      padding: $padding10;
 
       &:nth-last-child(n) {
         width: auto;
@@ -342,4 +357,11 @@ form {
       background-color: $secondColor;
     }
   }
+}
+
+footer {
+  text-align: right;
+  padding: $padding30;
+  @include capsbold(calc($text5 / 2));
+  font-weight: 500;
 }
