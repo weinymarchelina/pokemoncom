@@ -1,0 +1,345 @@
+$shadowMain: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+$paddingSecond: calc(1.75rem + 3.25vw);
+$paddingMain: calc(2rem + 4.25vw);
+$padding10: calc(0.35rem + 0.25vw);
+$padding15: calc(0.5rem + 0.35vw);
+$padding20: calc(0.75rem + 0.5vw);
+$padding25: calc(1rem + 0.5vw);
+$padding30: calc(1rem + 0.75vw);
+$padding35: calc(1rem + 1vw);
+$padding50: calc(1.5rem + 1.35vw);
+$padding80: calc(1.5rem + 2vw);
+
+$letter5: calc(0.05rem + 0.02vw);
+$letter7: calc(0.1rem + 0.05vw);
+$letter10: calc(0.15rem + 0.15vw);
+$letter20: calc(0.25rem + 0.25vw);
+
+$text1: calc(0.6rem + 0.5vw);
+$text2: calc(0.65rem + 0.65vw);
+$text3: calc(0.7rem + 0.7vw);
+$text5: calc(0.75rem + 0.8vw);
+$text6: calc(1rem + 1vw);
+$text7: calc(1.25rem + 1.2vw);
+$text8: calc(1.5rem + 1.5vw);
+$text9: calc(2rem + 1.5vw);
+$text10: calc(2.5rem + 1.75vw);
+$text12: calc(2.75rem + 2vw);
+
+$width75: calc(3rem + 1.35vw);
+$width100: calc(4.05rem + 2vw);
+$width200: calc(7rem + 5vw);
+$width300: calc(10rem + 7.5vw);
+$width700: calc(20rem + 20vw);
+$width750: calc(22rem + 21.5vw);
+$mainColor: #fff9ed;
+$secondColor: #f46640;
+$thirdColor: #622524;
+
+@mixin capsbold($font) {
+  font-size: $font;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+@mixin flex($add) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @if ($add == "even") {
+    justify-content: space-between;
+  }
+
+  @if ($add == "col") {
+    flex-direction: column;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: $mainColor;
+}
+
+.content {
+  padding: calc($paddingMain * 1.25) $paddingSecond;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  @include capsbold($text3);
+  transition: 250ms ease;
+
+  &:hover {
+    color: transparent;
+    -webkit-text-stroke: 1px black;
+  }
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  transition: 250ms ease;
+  border-radius: 1vw;
+  position: relative;
+
+  &:hover {
+    background-color: $mainColor;
+    border: $letter7 solid $thirdColor;
+    border-radius: 1vw;
+  }
+
+  a {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+img {
+  width: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+nav {
+  @include flex("even");
+  justify-content: space-between;
+  //   align-items: flex-start;
+  width: 100%;
+  padding: 0 $paddingSecond;
+  position: fixed;
+
+  div:nth-child(1) {
+    flex: 1;
+    padding: $padding10 0;
+  }
+
+  div:nth-child(2) {
+    text-align: right;
+    flex: 9;
+    a {
+      margin-left: $padding50;
+    }
+  }
+}
+
+.home-container {
+  @include flex("col");
+
+  ul {
+    @include flex("");
+    text-align: center;
+    flex-wrap: wrap;
+  }
+
+  .pokemonList {
+    @include flex("col");
+  }
+
+  .pagination {
+    margin: $padding50 0;
+
+    button {
+      border: $letter7 solid $thirdColor;
+      padding: $padding10;
+      width: $width75;
+      margin: $padding10;
+      background-color: #eeeeee;
+      @include capsbold($text3);
+
+      &:hover {
+        background-color: #eeeeee;
+      }
+    }
+
+    .currentBtn {
+      background-color: $thirdColor;
+      color: white;
+      border: $letter7 solid $thirdColor;
+
+      &:hover {
+        background-color: $secondColor;
+      }
+    }
+  }
+}
+
+.pokemonChild {
+  @include flex("col");
+  border: $letter5 solid $thirdColor;
+  border-radius: 1vw;
+  width: $width200;
+  background-color: #f0f0f0;
+  font-size: $text5;
+  box-shadow: $shadowMain;
+  margin: $padding10;
+
+  p {
+    padding: $padding25 $padding25 0;
+    margin-bottom: $padding15;
+    font-weight: 500;
+  }
+
+  a {
+    background-color: $thirdColor;
+    padding: $padding10;
+    border-radius: 0 0 1vw 1vw;
+    width: 100%;
+    color: white;
+    @include capsbold($text2);
+
+    &:hover {
+      color: transparent;
+      background-color: transparent;
+      border: $letter7 solid $thirdColor;
+    }
+  }
+}
+
+.info-container {
+  width: min(50%, calc($width700 - $width200 - 10vw));
+  padding: $padding20;
+  background-color: #f0f0f0;
+  text-align: center;
+
+  h1 {
+    font-size: $text8;
+    letter-spacing: $letter7;
+  }
+
+  p {
+    font-size: $text5;
+  }
+
+  a {
+    border-radius: 0;
+    text-align: center;
+  }
+}
+
+form {
+  @include flex("");
+  border-bottom: $letter7 solid $thirdColor;
+  padding-bottom: $padding20;
+  width: 100%;
+  margin-bottom: $padding50;
+
+  button {
+    margin: 0 $padding15;
+    padding: $padding10 $padding15;
+    background-color: $thirdColor;
+    @include capsbold($text1);
+    color: white;
+
+    &:hover {
+      background-color: transparent;
+      color: $thirdColor;
+    }
+  }
+
+  input {
+    width: $width700;
+    padding: $letter10;
+    font-size: $text3;
+  }
+}
+
+.error-msg {
+  background-color: $thirdColor;
+  border: $letter10 solid $thirdColor;
+  font-size: $text5;
+  padding: $padding15;
+  border-radius: 1vw;
+  color: #eeeeee;
+  margin-bottom: $padding30;
+}
+
+.pokemonContainer {
+  @include flex("col");
+  align-items: flex-start;
+
+  h3 {
+    font-size: $text7;
+    padding-bottom: $padding15;
+  }
+
+  p {
+    font-size: $text6;
+  }
+
+  ul {
+    margin-bottom: $paddingSecond;
+    padding: 0 $padding30;
+  }
+
+  .header {
+    text-align: center;
+    align-self: center;
+    h2 {
+      font-size: $text10;
+      margin-bottom: $padding15;
+    }
+
+    p {
+      font-size: $text6;
+    }
+  }
+
+  .base {
+    @include flex("even");
+    align-items: flex-start;
+    width: 100%;
+
+    ul {
+      flex: 1;
+      @include flex("col");
+      align-items: flex-start;
+      padding: 0 $padding30;
+    }
+  }
+
+  .images {
+    @include flex("");
+    width: $width750;
+    align-self: center;
+  }
+
+  li {
+    margin-left: $paddingSecond;
+  }
+
+  ul:nth-last-child(n) {
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+    font-size: $text5;
+
+    th {
+      width: 20%;
+
+      &:nth-last-child(n) {
+        width: auto;
+      }
+    }
+
+    tr {
+      background-color: #eeeeee;
+    }
+
+    tr:nth-child(1) {
+      background-color: $secondColor;
+    }
+  }
+}
